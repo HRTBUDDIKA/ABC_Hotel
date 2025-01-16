@@ -20,6 +20,8 @@
                 <a href="{{ route('meal-plans') }}" class="hover:text-blue-600">Meal Plans</a>
                 <a href="{{ route('about') }}" class="hover:text-blue-600">About</a>
                 <a href="{{ route('contact') }}" class="hover:text-blue-600">Contact</a>
+                <a href="{{ route('login') }}" class="hover:text-blue-600">Login</a>
+                <a href="{{ route('register') }}" class="hover:text-blue-600">Register</a>
             </div>
         </div>
     </div>
