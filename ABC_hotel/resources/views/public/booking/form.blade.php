@@ -1,4 +1,3 @@
-{{-- resources/views/public/booking/form.blade.php --}}
 @extends('layouts.public')
 
 @section('title', 'Book a Room')
