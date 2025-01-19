@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\MealPlanController;
+use App\Http\Controllers\Admin\NewsAlertController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,9 @@ Route::get('/book/{room}', [\App\Http\Controllers\public\BookingController::clas
 Route::post('/book/{room}', [\App\Http\Controllers\public\BookingController::class, 'store'])->name('booking.store');
 Route::get('/booking/confirmation/{booking}', [\App\Http\Controllers\public\BookingController::class, 'confirmation'])->name('booking.confirmation');
 
+//News Alert routes
+Route::get('/api/news-alerts', [\App\Http\Controllers\NewsAlertController::class, 'getActiveAlerts']);
+
 // Authentication required routes
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard route with role-based redirection
@@ -54,6 +58,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('rooms', RoomController::class);
         Route::resource('meal-plans', MealPlanController::class);
         Route::resource('bookings', BookingController::class);
+        Route::resource('news-alerts', NewsAlertController::class);
 
         Route::get('/reports', [ReportController::class, 'index'])->name('reports');
     });

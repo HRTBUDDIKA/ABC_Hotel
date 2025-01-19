@@ -45,8 +45,8 @@
                         <div class="col-md-6 mb-3">
                             <label for="bed_type" class="form-label">Bed Type</label>
                             <select class="form-select" id="bed_type" name="bed_type" required>
-                                <option value="Single" {{ (isset($room) && $room->bed_type === 'Single') ? 'selected' : '' }}>Single</option>
-                                <option value="Double" {{ (isset($room) && $room->bed_type === 'Double') ? 'selected' : '' }}>Double</option>
+                                <option value="Twin" {{ (isset($room) && $room->bed_type === 'Twin') ? 'selected' : '' }}>Twin</option>
+                                <option value="Queen" {{ (isset($room) && $room->bed_type === 'Queen') ? 'selected' : '' }}>Queen</option>
                                 <option value="King" {{ (isset($room) && $room->bed_type === 'King') ? 'selected' : '' }}>King</option>
                             </select>
                         </div>

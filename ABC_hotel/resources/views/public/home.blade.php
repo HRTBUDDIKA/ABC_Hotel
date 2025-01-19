@@ -17,6 +17,11 @@
             </div>
         </div>
 
+        <!-- News Alerts with proper spacing -->
+        <div class="mx-auto px-4 sm:px-6 lg:px-8 border-gray-900">
+            @include('components.news-alerts')
+        </div>
+
         <section class="py-12">
             <h2 class="text-3xl font-semibold text-center mb-8">Featured Rooms</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
