@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="space-y-12">
-        <div class="relative h-96">
+        <div class="relative h-96" style="background-image: url('{{ asset('images/w1.jpg') }}'); background-size: cover; background-position: center;">
             <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center text-white">
@@ -16,8 +16,10 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- News Alerts with proper spacing -->
+
+    <!-- News Alerts with proper spacing -->
         <div class="mx-auto px-4 sm:px-6 lg:px-8 border-gray-900">
             @include('components.news-alerts')
         </div>

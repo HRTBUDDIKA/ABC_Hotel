@@ -4,6 +4,7 @@ namespace App\Http\Controllers\public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Inquiry;
 use App\Models\MealPlan;
 use App\Models\Room;
 use Illuminate\Http\Request;
@@ -29,20 +30,23 @@ class PublicController extends Controller
         return view('public.contact');
     }
 
-    public function submitContact(Request $request)
+    public function submitInquiry(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|max:255',
+            'phone' => 'nullable|string|max:20',
+            'subject' => 'required|string|max:255',
             'message' => 'required|string'
         ]);
 
-        Contact::create($validated);
+        Inquiry::create($validated);
 
-        return back()->with('success', 'Thank you for your message. We will contact you soon.');
+        return redirect()->route('contact')
+            ->with('success', 'Your inquiry has been submitted successfully. We will contact you soon.');
     }
 
-    public function rooms()
+        public function rooms()
     {
         $rooms = Room::where('status', 'available')
             ->orderBy('category')

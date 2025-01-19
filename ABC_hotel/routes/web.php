@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\public\PublicController;
 use App\Http\Controllers\Receptionist\DashboardController as ReceptionistDashboardController;
+use App\Http\Controllers\Receptionist\InquiryController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PublicController::class, 'home'])->name('welcome');
 Route::get('/about', [PublicController::class, 'about'])->name('about');
 Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
-Route::post('/contact', [PublicController::class, 'submitContact'])->name('contact.submit');
+Route::post('/contact', [PublicController::class, 'submitInquiry'])->name('contact.submit');
 
 // Room related routes
 Route::get('/rooms', [PublicController::class, 'rooms'])->name('rooms');
@@ -75,6 +76,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('rooms', [\App\Http\Controllers\Receptionist\RoomController::class, 'index'])->name('rooms.index');
         Route::patch('rooms/{room}/status', [\App\Http\Controllers\Receptionist\RoomController::class, 'updateStatus'])
             ->name('rooms.update-status');
+
+        Route::get('/inquiries', [InquiryController::class, 'index'])->name('inquiries.index');
+        Route::get('/inquiries/{inquiry}', [InquiryController::class, 'show'])->name('inquiries.show');
+        Route::post('/inquiries/{inquiry}/respond', [InquiryController::class, 'respond'])->name('inquiries.respond');
     });
 
     // User routes
