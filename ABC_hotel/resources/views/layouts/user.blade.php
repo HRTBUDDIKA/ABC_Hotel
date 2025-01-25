@@ -45,6 +45,8 @@
     </div>
 </nav>
 
+
+
 <main class="py-10">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         @if (session('success'))
@@ -62,5 +64,39 @@
         @yield('content')
     </div>
 </main>
+
+<footer class="bg-gray-800 text-white mt-12">
+    <div class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+                <p>123 Hotel Street</p>
+                <p>City, Country</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Email: info@abchotel.com</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="{{ route('rooms') }}">Rooms</a></li>
+                    <li><a href="{{ route('meal-plans') }}">Meal Plans</a></li>
+                    <li><a href="{{ route('about') }}">About Us</a></li>
+                    <li><a href="{{ route('contact') }}">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-blue-400">Facebook</a>
+                    <a href="#" class="hover:text-blue-400">Twitter</a>
+                    <a href="#" class="hover:text-blue-400">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 text-center">
+            <p>&copy; {{ date('Y') }} ABC Hotel. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
