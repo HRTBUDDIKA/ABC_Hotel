@@ -29,6 +29,9 @@
                     <a href="{{ route('user.meal-plans') }}" class="@if(request()->routeIs('user.meal-plans')) text-blue-500 @endif">
                         Meal-Plan
                     </a>
+                    <a href="{{ route('user.profile') }}" class="@if(request()->routeIs('user.profile.*')) text-blue-500 @endif">
+                        Profile
+                    </a>
                 </div>
             </div>
             <div class="flex items-center">

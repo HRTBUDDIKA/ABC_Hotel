@@ -159,6 +159,6 @@ class DashboardController extends Controller
                 })
         ];
 
-        return view('user.profile', compact('user', 'preferences'));
+        return view('profile.edit', compact('user', 'preferences'));
     }
 }
