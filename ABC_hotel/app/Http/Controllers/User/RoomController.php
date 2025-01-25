@@ -24,5 +24,10 @@ class RoomController
         return view('public.rooms.category', compact('rooms', 'category'));
     }
 
+    public function bookingDetails(Room $room)
+    {
+        return view('user.bookings.details', compact('room'));
+    }
+
 
 }

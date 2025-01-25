@@ -103,6 +103,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         //User room routes
         Route::get("/rooms", [\App\Http\Controllers\User\RoomController::class, 'rooms'])->name('rooms');
+        Route::get("/room/{room}", [\App\Http\Controllers\User\RoomController::class, 'bookingDetails'])->name('bookingDetails');
         Route::get('/rooms/{category}', [\App\Http\Controllers\User\RoomController::class, 'roomCategory'])->name('rooms.category');
 
         //Meal-plan routes
