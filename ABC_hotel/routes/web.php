@@ -11,6 +11,7 @@ use App\Http\Controllers\public\PublicController;
 use App\Http\Controllers\Receptionist\DashboardController as ReceptionistDashboardController;
 use App\Http\Controllers\Receptionist\InquiryController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,7 @@ Route::get('/rooms/{category}', [PublicController::class, 'roomCategory'])->name
 Route::get('/meal-plans', [PublicController::class, 'mealPlans'])->name('meal-plans');
 
 // Booking routes for guest users
+Route::get('/room/{room}', [\App\Http\Controllers\public\RoomController::class, 'bookingDetails'])->name('booking.details');
 Route::get('/book/{room}', [\App\Http\Controllers\public\BookingController::class, 'bookingForm'])->name('booking.form');
 Route::post('/book/{room}', [\App\Http\Controllers\public\BookingController::class, 'store'])->name('booking.store');
 Route::get('/booking/confirmation/{booking}', [\App\Http\Controllers\public\BookingController::class, 'confirmation'])->name('booking.confirmation');

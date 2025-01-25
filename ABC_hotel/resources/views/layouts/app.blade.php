@@ -13,13 +13,13 @@
     <!-- Custom CSS -->
     <style>
         .navbar-custom {
-            background-color: #1a237e;
+            background-color: #ffffff;
             padding: 1rem;
         }
 
         .navbar-custom .navbar-brand,
         .navbar-custom .nav-link {
-            color: white;
+            color: black;
         }
 
         .navbar-custom .nav-link:hover {
@@ -38,7 +38,7 @@
         }
 
         .footer {
-            background-color: #1a237e;
+            background-color: #000000;
             color: white;
             padding: 2rem 0;
             margin-top: 3rem;

@@ -7,15 +7,16 @@
 @endsection
 
 @section('content')
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-6xl mx-auto">
         <h1 class="text-3xl font-bold mb-8">Book {{ $room->category }}</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <!-- Room Details Card -->
-            <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="bg-white rounded-lg shadow-md p-6 h-auto">
                 <h2 class="text-xl font-semibold mb-4">Room Details</h2>
                 @if($room->image)
-                    <img src="{{ asset('storage/' . $room->image) }}" alt="{{ $room->category }}" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <img src="{{ asset('storage/' . $room->image) }}" alt="{{ $room->category }}"
+                         class="w-full object-cover rounded-lg mb-4">
                 @endif
                 <div class="space-y-2">
                     <p><strong>Size:</strong> {{ $room->size }} sqft</p>
@@ -25,6 +26,7 @@
                     <p class="text-xl font-bold mt-4">${{ $room->price }}/night</p>
                 </div>
             </div>
+
 
             <!-- Booking Form -->
             <div class="bg-white rounded-lg shadow-md p-6">

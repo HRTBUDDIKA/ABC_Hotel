@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+
     public function bookingForm(Room $room)
     {
         $mealPlans = MealPlan::all();

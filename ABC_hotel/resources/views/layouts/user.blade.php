@@ -15,7 +15,8 @@
                 <div class="flex-shrink-0 flex items-center">
                     <span class="text-xl font-bold">ABC Hotel</span>
                 </div>
-                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8 items-center">
+
                     <a href="{{ route('user.dashboard') }}" class="@if(request()->routeIs('user.dashboard')) text-blue-500 @endif">
                         Dashboard
                     </a>

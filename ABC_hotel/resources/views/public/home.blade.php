@@ -37,8 +37,8 @@
                             <p class="text-gray-600 mb-4">{{ $room->special_feature }}</p>
                             <div class="flex justify-between items-center">
                                 <span class="text-lg font-bold">${{ $room->price }}/night</span>
-                                <a href="{{ route('booking.form', $room) }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                                    Book Now
+                                <a href="{{ route('booking.details', $room) }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                    Show me
                                 </a>
                             </div>
                         </div>
@@ -46,5 +46,4 @@
                 @endforeach
             </div>
         </section>
-    </div>
 @endsection
