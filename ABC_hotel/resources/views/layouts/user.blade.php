@@ -23,6 +23,12 @@
                     <a href="{{ route('user.bookings.index') }}" class="@if(request()->routeIs('user.bookings.*')) text-blue-500 @endif">
                         My Bookings
                     </a>
+                    <a href="{{ route('user.rooms') }}" class="@if(request()->routeIs('user.rooms')) text-blue-500 @endif">
+                        Rooms
+                    </a>
+                    <a href="{{ route('user.meal-plans') }}" class="@if(request()->routeIs('user.meal-plans')) text-blue-500 @endif">
+                        Meal-Plan
+                    </a>
                 </div>
             </div>
             <div class="flex items-center">

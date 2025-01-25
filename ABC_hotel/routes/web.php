@@ -11,6 +11,8 @@ use App\Http\Controllers\public\PublicController;
 use App\Http\Controllers\Receptionist\DashboardController as ReceptionistDashboardController;
 use App\Http\Controllers\Receptionist\InquiryController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\Homecontroller;
+use App\Http\Controllers\User\MealPlan;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -98,6 +100,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('bookings', \App\Http\Controllers\User\BookingController::class);
         Route::post('bookings/{booking}/cancel', [\App\Http\Controllers\User\BookingController::class, 'cancel'])
             ->name('bookings.cancel');
+
+        //User room routes
+        Route::get("/rooms", [\App\Http\Controllers\User\RoomController::class, 'rooms'])->name('rooms');
+        Route::get('/rooms/{category}', [\App\Http\Controllers\User\RoomController::class, 'roomCategory'])->name('rooms.category');
+
+        //Meal-plan routes
+        Route::get("/meal-plans", [MealPlan::class, 'mealPlans'])->name('meal-plans');
+
     });
 
     // Profile routes
