@@ -7,6 +7,7 @@ use App\Models\Booking;
 use App\Models\MealPlan;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BookingController extends Controller
 {
@@ -39,6 +40,9 @@ class BookingController extends Controller
             $validated['check_out']
         );
 
+        // Generate booking reference
+        $bookingReference = 'BOOK-' . strtoupper(Str::random(8));
+
         $booking = Booking::create([
             'room_id' => $room->id,
             'meal_plan_id' => $validated['meal_plan_id'],
@@ -50,15 +54,16 @@ class BookingController extends Controller
             'total_amount' => $roomTotal + $mealPlanTotal,
             'special_requests' => $validated['special_requests'],
             'status' => 'pending',
-            // Guest user info
             'guest_name' => $validated['name'],
             'guest_email' => $validated['email'],
-            'guest_phone' => $validated['phone']
+            'guest_phone' => $validated['phone'],
+            'booking_reference' => $bookingReference
         ]);
 
         return redirect()->route('booking.confirmation', $booking)
             ->with('success', 'Booking request submitted successfully!');
     }
+
 
     public function confirmation(Booking $booking)
     {

@@ -18,7 +18,16 @@ class Booking extends Model
         'meal_plan_total',
         'total_amount',
         'status',
-        'special_requests'
+        'special_requests',
+        'guest_name',
+        'guest_email',
+        'guest_phone',
+        'payment_status',
+        'transaction_id',
+        'discount',
+        'promo_code',
+        'booking_reference',
+        'cancelled_at'
     ];
 
     protected $casts = [
@@ -30,6 +39,7 @@ class Booking extends Model
         'guests' => 'integer'
     ];
 
+    // Relationships
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -45,6 +55,7 @@ class Booking extends Model
         return $this->belongsTo(MealPlan::class);
     }
 
+    // Calculate totals
     public function calculateTotal(): void
     {
         $nights = $this->check_in->diffInDays($this->check_out);
@@ -53,6 +64,7 @@ class Booking extends Model
         $this->total_amount = $this->room_total + $this->meal_plan_total;
     }
 
+    // Status checks
     public function isPending(): bool
     {
         return $this->status === 'pending';
@@ -71,5 +83,17 @@ class Booking extends Model
     public function isCompleted(): bool
     {
         return $this->status === 'completed';
+    }
+
+    // Automatically generate booking reference if not set
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($booking) {
+            if (empty($booking->booking_reference)) {
+                $booking->booking_reference = 'BOOK-' . strtoupper(str_random(8));
+            }
+        });
     }
 }
