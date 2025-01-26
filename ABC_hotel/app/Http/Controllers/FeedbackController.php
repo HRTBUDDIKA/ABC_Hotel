@@ -1,13 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Feedback;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    public function create()
+    public function feedBack()
     {
-        return view('feedback.create');
+        $featuredRooms = Room::where('is_featured', true)->get(); // Assuming Room model exists
+        $feedbacks = Feedback::latest()->take(5)->get(); // Fetch the latest 5 feedbacks
+        return view('welcome', compact('featuredRooms', 'feedbacks'));
     }
 
     public function store(Request $request)

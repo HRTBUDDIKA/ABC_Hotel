@@ -45,6 +45,9 @@ Route::get('/booking/confirmation/{booking}', [\App\Http\Controllers\public\Book
 //News Alert routes
 Route::get('/api/news-alerts', [\App\Http\Controllers\NewsAlertController::class, 'getActiveAlerts']);
 
+//Feedback routes
+Route::get('/feedback', [FeedbackController::class, 'feedBack'])->name('feedback');
+
 // Authentication required routes
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard route with role-based redirection

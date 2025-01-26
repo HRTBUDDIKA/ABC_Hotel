@@ -4,6 +4,7 @@ namespace App\Http\Controllers\public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Feedback;
 use App\Models\Inquiry;
 use App\Models\MealPlan;
 use App\Models\Room;
@@ -16,8 +17,9 @@ class PublicController extends Controller
         $featuredRooms = Room::where('status', 'available')
             ->take(4)
             ->get();
+        $feedbacks = Feedback::latest()->take(5)->get();
 
-        return view('public.home', compact('featuredRooms'));
+        return view('public.home', compact('featuredRooms', 'feedbacks'));
     }
 
     public function about()
