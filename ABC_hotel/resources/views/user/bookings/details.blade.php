@@ -59,21 +59,33 @@
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow-md p-6 h-auto self-start my-10">
-                <h2 class="text-xl font-semibold mb-6">Room Details</h2>
-                <div class="space-y-2">
-                    <form method="POST" action="{{ route('user.feedback.store') }}">
-                        @csrf
-                        <textarea name="message" required></textarea>
-                        <select name="rating">
+            <div class="bg-white rounded-lg shadow-md p-6 my-10">
+                <h2 class="text-xl font-semibold mb-6">Give Us Your Feedback</h2>
+                <form method="POST" action="{{ route('user.feedback.store') }}" class="space-y-4">
+                    @csrf
+                    <!-- Feedback Message -->
+                    <div>
+                        <label for="message" class="block text-gray-700 font-semibold">Your Feedback</label>
+                        <textarea name="message" id="message" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                    </div>
+
+                    <!-- Rating -->
+                    <div>
+                        <label for="rating" class="block text-gray-700 font-semibold">Rate Your Experience</label>
+                        <select name="rating" id="rating" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                             @for ($i = 1; $i <= 5; $i++)
                                 <option value="{{ $i }}">{{ $i }} Star</option>
                             @endfor
                         </select>
-                        <button type="submit">Submit Feedback</button>
-                    </form>
-                </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Submit Feedback</button>
+                    </div>
+                </form>
             </div>
+
         </div>
     </div>
 @endsection
