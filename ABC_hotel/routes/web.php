@@ -78,12 +78,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('dashboard');
 
         Route::resource('bookings', \App\Http\Controllers\Receptionist\BookingController::class);
+        Route::patch('receptionist/bookings/{booking}/status', [\App\Http\Controllers\Receptionist\BookingController::class, 'updateStatus'])
+            ->name('bookings.updateStatus');
+
+        Route::get('/receptionist/bookings/report', [\App\Http\Controllers\Receptionist\BookingController::class, 'generateReport'])
+            ->name('bookings.report');
+
+
         Route::post('bookings/{booking}/update-status', [\App\Http\Controllers\Receptionist\BookingController::class, 'updateStatus'])
             ->name('bookings.update-status');
 
         Route::get('rooms', [\App\Http\Controllers\Receptionist\RoomController::class, 'index'])->name('rooms.index');
         Route::patch('rooms/{room}/status', [\App\Http\Controllers\Receptionist\RoomController::class, 'updateStatus'])
             ->name('rooms.update-status');
+
+        Route::get('report', [\App\Http\Controllers\Receptionist\ReportController::class, 'index'])->name('report.index');
 
         Route::get('/inquiries', [InquiryController::class, 'index'])->name('inquiries.index');
         Route::get('/inquiries/{inquiry}', [InquiryController::class, 'show'])->name('inquiries.show');

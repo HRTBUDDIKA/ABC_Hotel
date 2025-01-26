@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }} - Receptionist</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo1.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <body class="bg-gray-100">
 <div class="min-h-screen flex">
