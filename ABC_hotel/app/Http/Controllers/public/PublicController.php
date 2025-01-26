@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Feedback;
 use App\Models\Inquiry;
 use App\Models\MealPlan;
+use App\Models\NewsAlert;
 use App\Models\Room;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,17 @@ class PublicController extends Controller
             ->get();
         $feedbacks = Feedback::latest()->take(5)->get();
 
-        return view('public.home', compact('featuredRooms', 'feedbacks'));
+        $alerts = NewsAlert::where('status', true)
+            ->where('start_date', '<=', now())
+            ->where(function ($query) {
+                $query->whereNull('end_date')
+                    ->orWhere('end_date', '>=', now());
+            })
+            ->orderBy('priority', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('public.home', compact('featuredRooms', 'feedbacks', 'alerts'));
     }
 
     public function about()

@@ -18,10 +18,14 @@
         </div>
     </div>
 
-    <!-- News Alerts with proper spacing -->
-    <div class="mx-auto px-4 sm:px-6 lg:px-8 border-gray-900">
-        @include('components.news-alerts')
+    <!-- News Alerts Section -->
+    <div class="mx-auto px-4 sm:px-6 lg:px-8 my-5">
+        <h2 class="text-3xl font-semibold text-center mb-8">News Alerts</h2>
+        <div class="border border-gray-300 rounded-lg bg-gray-100 p-6 shadow-md">
+            @include('components.news-alerts', ['alerts' => $alerts])
+        </div>
     </div>
+
 
     <!-- Featured Rooms Section -->
     <section class="py-12">
