@@ -19,6 +19,7 @@
             <tr class="bg-gray-100">
                 <th class="border border-gray-300 px-4 py-2">#</th>
                 <th class="border border-gray-300 px-4 py-2">User id</th>
+                <th class="border border-gray-300 px-4 py-2">Guest Name</th>
                 <th class="border border-gray-300 px-4 py-2">Room id</th>
                 <th class="border border-gray-300 px-4 py-2">Meal plan id</th>
                 <th class="border border-gray-300 px-4 py-2">Check-In</th>
@@ -32,6 +33,7 @@
                 <tr>
                     <td class="border border-gray-300 px-4 py-2 text-center">{{ $loop->iteration }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $booking->user_id }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $booking->guest_name }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $booking->room->id }} </td>
                     <td class="border border-gray-300 px-4 py-2">{{ $booking->mealPlan->id }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $booking->check_in }}</td>
