@@ -58,6 +58,22 @@
                     </a>
                 </div>
             </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 h-auto self-start my-10">
+                <h2 class="text-xl font-semibold mb-6">Room Details</h2>
+                <div class="space-y-2">
+                    <form method="POST" action="{{ route('user.feedback.store') }}">
+                        @csrf
+                        <textarea name="message" required></textarea>
+                        <select name="rating">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <option value="{{ $i }}">{{ $i }} Star</option>
+                            @endfor
+                        </select>
+                        <button type="submit">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

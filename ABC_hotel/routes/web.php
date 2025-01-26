@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\MealPlanController;
 use App\Http\Controllers\Admin\NewsAlertController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\public\PublicController;
 use App\Http\Controllers\Receptionist\DashboardController as ReceptionistDashboardController;
@@ -108,6 +109,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         //Meal-plan routes
         Route::get("/meal-plans", [MealPlan::class, 'mealPlans'])->name('meal-plans');
+
+        //Feedback routes
+        Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 
     });
 
