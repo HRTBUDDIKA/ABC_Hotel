@@ -11,6 +11,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $bookings = Booking::with(['room', 'mealPlan'])
+            ->latest()
+            ->paginate(10);
+
         $totalBookings = Booking::count();
         $pendingBookings = Booking::where('status', 'pending')->count();
         $availableRooms = Room::where('status', 'available')->count();
@@ -20,7 +24,8 @@ class DashboardController extends Controller
             'totalBookings',
             'pendingBookings',
             'availableRooms',
-            'todayCheckIns'
+            'todayCheckIns',
+            'bookings',
         ));
     }
 }

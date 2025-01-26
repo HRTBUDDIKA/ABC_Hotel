@@ -26,42 +26,42 @@
         </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
-{{--        @foreach($bookings as $booking)--}}
-{{--            <tr>--}}
-{{--                <td class="px-6 py-4 whitespace-nowrap">--}}
-{{--                    #{{ $booking->id }}--}}
-{{--                </td>--}}
-{{--                <td class="px-6 py-4 whitespace-nowrap">--}}
-{{--                    {{ $booking->user->name }}--}}
-{{--                </td>--}}
-{{--                <td class="px-6 py-4 whitespace-nowrap">--}}
-{{--                    {{ $booking->room->name }}--}}
-{{--                </td>--}}
-{{--                <td class="px-6 py-4 whitespace-nowrap">--}}
-{{--                    {{ $booking->check_in_date->format('M d, Y') }}--}}
-{{--                </td>--}}
-{{--                <td class="px-6 py-4 whitespace-nowrap">--}}
-{{--                    {{ $booking->check_out_date->format('M d, Y') }}--}}
-{{--                </td>--}}
-{{--                <td class="px-6 py-4 whitespace-nowrap">--}}
-{{--                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full--}}
-{{--                        @if($booking->status === 'confirmed') bg-green-100 text-green-800--}}
-{{--                        @elseif($booking->status === 'pending') bg-yellow-100 text-yellow-800--}}
-{{--                        @elseif($booking->status === 'cancelled') bg-red-100 text-red-800--}}
-{{--                        @endif">--}}
-{{--                        {{ ucfirst($booking->status) }}--}}
-{{--                    </span>--}}
-{{--                </td>--}}
-{{--                <td class="px-6 py-4 whitespace-nowrap text-sm">--}}
-{{--                    <a href="{{ route('receptionist.bookings.show', $booking) }}"--}}
-{{--                       class="text-indigo-600 hover:text-indigo-900">View</a>--}}
-{{--                </td>--}}
-{{--            </tr>--}}
-{{--        @endforeach--}}
+        @forelse($bookings as $booking)
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{ $booking->id }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{ $booking->guest_name }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{ $booking->room->id }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{ $booking->check_in }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    {{ $booking->check_out }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
+                        @if($booking->status === 'confirmed') bg-green-100 text-green-800
+                        @elseif($booking->status === 'pending') bg-yellow-100 text-yellow-800
+                        @elseif($booking->status === 'cancelled') bg-red-100 text-red-800
+                        @endif">
+                        {{ ucfirst($booking->status) }}
+                    </span>
+                </td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="8" class="border border-gray-300 px-4 py-2 text-center">No bookings found.</td>
+            </tr>
+        @endforelse
         </tbody>
     </table>
 
-{{--    <div class="p-4">--}}
-{{--        {{ $bookings->links() }}--}}
-{{--    </div>--}}
+    <div class="p-4">
+        {{ $bookings->links() }}
+    </div>
 </div>
